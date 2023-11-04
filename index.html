@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAYZAN Portfolio</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<section id="header">
+    <nav>
+        <a class="logo" href="#header">
+            <img src="images/logo-01.png" alt="logo"/>
+        </a>
+
+        <ul class="menu">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="header-heading">
+        <h4>Assalam-U-Alaikum, Are You Looking For A Professional?</h4>
+        <h1>I'm Muhammad<span>Fayzan</span></h1>
+        <p>I'm a dedicated and passionate developer with a strong commitment to crafting elegant and efficient solutions
+            in the world of software...</p>
+        <a class="header-btn" href="#contact">Contact</a>
+    </div>
+
+    <div class="images">
+        <img src="images/Faizan Pic..jpg" class="Fayzan">
+    </div>
+
+</section>
+<section id="about">
+    <div class="about-img">
+        <img src="images/about.png" alt="about-img"/>
+    </div>
+    <div class="about-text" data-aos="fade-down">
+        <h2>Web<span> Development </span>Professionals</h2>
+        <h3>I'm A Talented Web Developer With A Team</h3>
+        <p>I design and code beautifully simple things, and I love what I do...</p>
+        <a class="about-btn" href="#about">Read More</a>
+    </div>
+</section>
+<section id="work">
+    <div class="work-heading">
+        <h1>My Previous Work</h1>
+        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+    </div>
+    <div class="work-container">
+        <div class="work-box" data-aos="fade-right">
+            <div class="work-img">
+                <img src="images/R.jpeg">
+            </div>
+            <div class="work-text">
+                <h4>Neural Computational</h4>
+                <p>Artificial Neural Network Project Based On C Language.</p>
+                <a class="header-btn" href="#">Read</a>
+            </div>
+        </div>
+        <div class="work-box" data-aos="fade-down">
+            <div class="work-img">
+                <img src="images/bottle.jpg">
+            </div>
+            <div class="work-text">
+                <h4>Computer Vision</h4>
+                <p>Real-time defect identification of products...</p>
+                <a class="header-btn" href="#">Read</a>
+            </div>
+        </div>
+        <div class="work-box" data-aos="fade-left">
+            <div class="work-img">
+                <img src="images/OIP.jpeg">
+            </div>
+            <div class="work-text">
+                <h4>Audio Amplifier</h4>
+                <p>An audio amplifier increases the amplitude of a small signal to a useful level.</p>
+                <a class="header-btn" href="#">Read</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contact" data-aos="fade-down">
+    <div class="work-heading">
+        <div id="alert_message"></div>
+        <h1>Contact</h1>
+        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+    </div>
+    <form id="form">
+        <input type="hidden" name="receiver_name" id="receiver_name" value="FAYZAN">
+        <!-- you can set your email here in the receiver email option to get the emails -->
+        <input type="hidden" name="receiver_email" id="receiver_email" value="muhammad.faizan912.2000@gmail.com">
+        <input type="text" name="sender_name" id="sender_name" placeholder="Enter your name" autocomplete="true"
+               required>
+        <input type="email" name="sender_email" id="sender_email" placeholder="Enter your e-mail" autocomplete="true"
+               required>
+        <textarea name="message" id="message" placeholder="Your message here..." required></textarea>
+        <input type="submit" id="button" value="Submit" class="btn_2">
+    </form>
+</section>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="main.js"></script>
+
+<script type="text/javascript">
+    AOS.init();
+    emailjs.init('KwKwr3gFC962fZvwk')
+
+    const btn = document.getElementById('button');
+
+    document.getElementById('form')
+        .addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            btn.value = 'Processing...';
+
+            const serviceID = 'default_service';
+            const templateID = 'template_f5lp2ld';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    btn.value = 'Submit';
+                    var alertMessage = document.getElementById("alert_message");
+                    alertMessage.innerHTML = "<div class='alert-success'>Email has been successfully sent</div>";
+                    setTimeout(function () {
+                        alertMessage.innerHTML = "";
+                    }, 3000);
+                }, (err) => {
+                    btn.value = 'Submit';
+                    var alertMessage = document.getElementById("alert_message");
+                    alertMessage.innerHTML = "<div class='alert-error'>Failed to send the email...</div>";
+
+                    setTimeout(function () {
+                        alertMessage.innerHTML = "";
+                    }, 3000);
+                });
+        });
+</script>
+</body>
+</html>
